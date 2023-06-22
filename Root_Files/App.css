@@ -9,6 +9,19 @@ body{
  
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+  background:#ebebe9;
+
+}
+::-webkit-scrollbar-thumb {
+  background:rgb(30,56,50);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(19, 87, 73); 
+}
+
 .nav{
   background-color:rgb(255, 255, 255);
   width: 100%;
