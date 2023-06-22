@@ -3,6 +3,7 @@ import icon3 from '.img/icon7.png'
 import React, { useState } from 'react';
 import icon1 from '.img/3.png';
 import icon2 from '.img/aboutusimg.png';
+import Footer from './Footer';
 
 function About() {
   return (
@@ -50,6 +51,7 @@ function About() {
       <div className='img3'>
       </div>
     </div>
+      <Footer/>
   )
 }
 
