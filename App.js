@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
-import Contact from './Components/About';
+import About from './Components/About';
 import Order from './Components/Order';
 import Store from './Components/Store';
 import Formm from './Components/Formm';
+import Addtb from './Components/Addtb';
 function App() {
   return (
     <BrowserRouter>
@@ -13,8 +13,10 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/Order' element={<Order/>}/>
       <Route path='/Store' element={<Store/>}/>
-      <Route path='/Contact' element={<Contact/>}/>
+      <Route path='/About' element={<About/>}/>
       <Route path='/Formm' element={<Formm/>}/>
+      <Route path='/Addtb' element={<Addtb/>}/>
+  
     </Routes>
     </BrowserRouter>
   );
