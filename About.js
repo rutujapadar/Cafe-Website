@@ -7,6 +7,7 @@ import Footer from './Footer';
 
 function About() {
   return (
+    <>
     <div>
       <Header />
       <div className="conimg">
@@ -52,6 +53,7 @@ function About() {
       </div>
     </div>
       <Footer/>
+   </>
   )
 }
 
