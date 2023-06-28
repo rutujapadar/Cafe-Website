@@ -1,7 +1,7 @@
 import Header from './Header';
 import React, { useState } from 'react';
-import icon1 from './img/3.png';
-import icon2 from './img/aboutusimg.png';
+import icon1 from './component/img/3.png';
+import icon2 from './component/img/aboutusimg.png';
 import Footer from './Footer';
 import Header2 from './Header2';
 
@@ -9,7 +9,7 @@ function About() {
   return (
     <div>
       <Header />
-      <Header2/>
+      <Header2 />
       <div className="conimg">
         <img src={icon1}></img>
         <br />
@@ -28,13 +28,8 @@ function About() {
       </div>
       <div className="About">
         <img src={icon2}></img>
-        <h3>Our Story</h3>
-        <h1>TEXAS PROUD</h1>
-        <p>Founded by closely-knit family and friends in Texas Hill Country,<br />we’ve
-          always had one goal in mind to create a distinctive, out-of-this-world,
-          <br />experience that people drive across town for. An experience to be shared
-          through<br /> coffee + atmospheres that inspire the warmth of cozy evenings
-          <br />under a summer moon.</p>
+        <h3>About Us</h3>
+        <p>Welcome to <b>Bella Italia</b> , where passion for coffee and a love for <br />exceptional culinary experiences come together. We are more <br />than just a café – we are a destination where flavors, creativity,<br /> and community intertwine to create a truly memorable atmosphere.</p>
       </div>
       <div className="read">
         <button>Read More</button>
@@ -42,18 +37,22 @@ function About() {
       <div className='img2'>
       </div>
       <div className="About">
-      <img src={icon2}></img>
-      <h3>Our Coffee</h3>
-      <h1>THE WOOD MAKES IT GOOD</h1>
-      <p>There's a natural affinity between a wood fire and coffee beans.<br/>Our wood-fired coffee roasting process results in a smooth, balanced coffee.<br/>Every batch of Summer Moon coffee is roasted in our handmade brick roasters<br/>over seasoned Texas oak. We drew up the plans, laid every brick by hand,<br/>and have dedicated the better part of two decades to proving that<br/>the wood makes it good. Our team of roasters use sight,<br/>sound, and smell to produce a distinctly bold, flavorful taste.</p>
-      </div>
-      <br/>
-      <br/>
+        <img src={icon2}></img>
+        <h3>Our Story</h3>
+        <p><b>Bella Italia</b> was founded with a vision to provide a   haven for coffee <br/> enthusiasts and food lovers alike.Inspired by our deep appreciation<br/> for the art of coffee brewing and the joy it brings, we set out  to create <br/>  a space where people could indulge in the finest coffee while savoring <br/> delectable culinary creations.
+          From the moment we opened our  doors,<br/> we have been dedicated to offering an exceptional experience to our <br/> valued customers.Our journey started with a passionate team of coffee <br/> connoisseurs and talented chefs who shared a common goal:<br/> <b>to create a café that would become a beloved gathering place in the community.</b></p></div>
+      <br />
+      <br />
       <div className='img3'>
-      </div>
-      <Footer/>
-    </div>
-     
+      </div >
+      <div className='style2'>
+        <h3>Community and Sustainability</h3>
+        <p>We are proud to be an active member of our community. We strive to create <br/>  an inclusive and welcoming space  where people can connect, relax, and forge <br/> new friendships. By hosting local events, showcasing art, and supporting  local <br/>  talent, we aim to foster a vibrant and inspiring environment for all.<br/> 
+         <br/><br/> <b>Sustainability</b> s at the core of our values. We are committed to reducing our <br/> environmental footprint by implementing eco-friendly practices, such as using <br/> biodegradable packaging and supporting fair trade initiatives. Our goal is <br/> <i>to make a positive impact on both our community and the planet we call home.</i>
+</p></div>
+      <Footer />
+    </div >
+
   );
 }
 
