@@ -8,7 +8,7 @@ import { useState } from 'react'
 export default function Formm() {
 
   const [[name, setName], [email, setEmail], [contact, setContact]] = [
-    useState('Byul'), useState("vaisgheh"),useState("0987823749")];
+    useState('Byul'), useState("vaishchomu "),useState("0987823749")];
   
     function getData(e){
       let data=name;
@@ -16,10 +16,21 @@ export default function Formm() {
       let data3=contact;
       e.preventDefault();
       
-      console.log(data,data2,data3);
+      // document.getElementById('name1').innerHTML = ;
+      // document.getElementById('email1').innerHTML = ;
+      // document.getElementById('contact1').innerHTML = data3;
+
+      var table = document.getElementById("tab");
+      var row = table.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      cell1.innerHTML =data;
+      cell2.innerHTML = data2;
+      cell3.innerHTML = data3;
     }
   return (
-    <div>
+    <div className='formcon '>
 
         <Header/>
         <Header3/>
@@ -42,7 +53,18 @@ export default function Formm() {
  
             <input type="submit" defaultValue="Submit"/>
           </form>
+              </div>
+              <div className='tab'>
+              <table style={{marginLeft:'4%',marginTop:'4%',marginBottom:'4%'}} id='tab'>
+          <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+          </tr>
+         
+        </table>
         </div>
+
         <Footer/>
     </div>
   )
