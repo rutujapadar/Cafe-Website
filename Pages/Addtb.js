@@ -14,7 +14,7 @@ import Services from "./Services";
 
 function Addtb() {
   const [data,setUser]=useState([]);
-   
+    const columns=[{Header:'pId',accessor:'pid'},{Header:'Name',accessor:'name'}]
 
   //  useEffect(()=>{
   //   //fetch("https://jsonplaceholder.typicode.com/users/1")
@@ -30,7 +30,7 @@ function Addtb() {
     .then((res)=>res.json())
     .then((data)=>setUser(data.data))
   },[])
-  
+
   return (
     <div >
         <Header/>
@@ -58,7 +58,7 @@ function Addtb() {
                    {dataObj.name}
                   </Typography>
                   <Typography variant="body3" color="text.secondary" >
-                   {dataObj.city}
+                   {dataObj.desc}
                   </Typography>
                   
                 </CardContent>
@@ -68,20 +68,20 @@ function Addtb() {
                 <Button size="small">-
                 </Button>
                 <Typography variant="body1" color="text.primary">
-                 1
+                 {dataObj.quantity}
                   </Typography>
                 <Button size="small" >+</Button>
                 
               </CardActions>
               <CardContent sx={{marginTop:'20px'}}>
               <Typography variant="body1" color="text.secondary">
-                  ₹{dataObj.contact}
+                  ₹{dataObj.price}
                   </Typography>
              
               </CardContent>
               <CardContent sx={{marginTop:'20px',marginLeft:'50px'}}>
               <Typography variant="body1" color="text.primary">
-                  ₹{dataObj.contact}
+                  ₹{dataObj.price*dataObj.quantity}
                   </Typography>
              
               </CardContent>
