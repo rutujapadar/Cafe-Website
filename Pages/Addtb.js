@@ -31,6 +31,9 @@ function Addtb() {
     .then((data)=>setUser(data.data))
   },[])
 
+  const qtyInc = async()=>{
+   alert(data.quantity)
+  }
   return (
     <div >
         <Header/>
@@ -68,9 +71,9 @@ function Addtb() {
                 <Button size="small">-
                 </Button>
                 <Typography variant="body1" color="text.primary">
-                 {dataObj.quantity}
+                 {dataObj.qty}
                   </Typography>
-                <Button size="small" >+</Button>
+                <Button size="small" onClick={qtyInc}>+</Button>
                 
               </CardActions>
               <CardContent sx={{marginTop:'20px'}}>
@@ -81,7 +84,7 @@ function Addtb() {
               </CardContent>
               <CardContent sx={{marginTop:'20px',marginLeft:'50px'}}>
               <Typography variant="body1" color="text.primary">
-                  ₹{dataObj.price*dataObj.quantity}
+                  ₹{dataObj.price*dataObj.qty}
                   </Typography>
              
               </CardContent>
