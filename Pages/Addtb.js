@@ -10,11 +10,17 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import im1 from './img/cappu.JPG'
-import Services from "./Services";
+import { useNavigate, useParams } from "react-router-dom";
+import {useSelector} from "react-redux"
+import{ DLT }from "../redux/actions/action"
+import{ REMOVE }from "../redux/actions/action"
+import {useDispatch} from "react-redux"
+import{ ADD }from "../redux/actions/action"
 
 function Addtb() {
-  const [data,setUser]=useState([]);
-    const columns=[{Header:'pId',accessor:'pid'},{Header:'Name',accessor:'name'}]
+  const [data,setData]=useState([]);
+    
+const history= useNavigate()
 
   //  useEffect(()=>{
   //   //fetch("https://jsonplaceholder.typicode.com/users/1")
@@ -25,15 +31,45 @@ function Addtb() {
   //  )
   // "proxy": "http://localhost:8005",
 
-  useEffect(()=>{
-    fetch("/getUser")
-    .then((res)=>res.json())
-    .then((data)=>setUser(data.data))
-  },[])
+  // useEffect(()=>{
+  //   fetch("/getUser")
+  //   .then((res)=>res.json())
+  //   .then((data)=>setUser(data.data))
+  // },[])
 
-  const qtyInc = async()=>{
-   alert(data.quantity)
-  }
+  // const qtyInc = async()=>{
+  //  alert(data.quantity)
+  // }
+
+  const {id} = useParams()
+  const dispatch = useDispatch()
+  const getData= useSelector((state)=>state.cartreducer.carts)
+
+  const compare = () => {
+let comparedata = getData.filter((e) => {
+return e.id == id
+});
+setData(comparedata);
+
+}
+
+useEffect (() => { compare();
+}, [id])
+
+const dlt = (id) => {
+dispatch (DLT (id));
+history("/");
+}
+
+const remove = (item) => {
+dispatch(REMOVE(item))
+}
+
+const send=(e)=>{
+
+  dispatch(ADD(e));
+}
+
   return (
     <div >
         <Header/>
@@ -54,7 +90,7 @@ function Addtb() {
               
               <CardMedia
                 sx={{ width:100,height:"80px",margin:"10px"}}
-                image={im1} />
+                image={dataObj.img} />
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Typography gutterBottom variant="h6" component="div">
@@ -73,7 +109,7 @@ function Addtb() {
                 <Typography variant="body1" color="text.primary">
                  {dataObj.qty}
                   </Typography>
-                <Button size="small" onClick={qtyInc}>+</Button>
+                <Button size="small">+</Button>
                 
               </CardActions>
               <CardContent sx={{marginTop:'20px'}}>
@@ -89,7 +125,7 @@ function Addtb() {
              
               </CardContent>
             </Card>
-            )
+             )
           })}
        
         </div>
@@ -98,7 +134,7 @@ function Addtb() {
          <br></br>
          <br></br>
          <br></br>
-         {/* <Services/> */}
+         
         <Footer/>
     </div>
   );
