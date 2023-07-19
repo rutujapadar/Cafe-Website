@@ -16,10 +16,15 @@ import{ DLT }from "../redux/actions/action"
 import{ REMOVE }from "../redux/actions/action"
 import {useDispatch} from "react-redux"
 import{ ADD }from "../redux/actions/action"
+import Order from './Order';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Addtb() {
   const [data,setData]=useState([]);
-    
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClose = () => {
+    setAnchorEl(null);
+};
 const history= useNavigate()
 
   //  useEffect(()=>{
@@ -44,6 +49,19 @@ const history= useNavigate()
   const {id} = useParams()
   const dispatch = useDispatch()
   const getData= useSelector((state)=>state.cartreducer.carts)
+  const [total,setTotal] = useState(0);
+
+  const Bill = ()=>{
+    let total = 0;
+    getData.map((dataObj,k)=>{
+        total = dataObj.price * dataObj.qty + total
+    });
+    setTotal(total);
+};
+
+useEffect(()=>{
+    Bill();
+},[Bill])
 
   const compare = () => {
 let comparedata = getData.filter((e) => {
@@ -58,7 +76,9 @@ useEffect (() => { compare();
 
 const dlt = (id) => {
 dispatch (DLT (id));
-history("/");
+if(getData.length<=1){
+  history("/Order")
+}
 }
 
 const remove = (item) => {
@@ -71,6 +91,10 @@ const send=(e)=>{
 }
 
   return (
+     <>
+     {
+      getData.length?
+    
     <div >
         <Header/>
         <Header3/>
@@ -81,12 +105,11 @@ const send=(e)=>{
           <h4>Item</h4>
           <h4>Quantity</h4>
           <h4>Price</h4>
-          <h4>Total</h4>
         </div>
         <div>
-          {data.map((dataObj,index)=>{
+          {getData.map((dataObj,index)=>{
             return (
-              <Card sx={{ maxWidth:750,display:'flex',height:"100px",margin:"35px 60px"}}>
+              <Card sx={{ maxWidth:650,display:'flex',height:"100px",margin:"35px 60px"}}>
               
               <CardMedia
                 sx={{ width:100,height:"80px",margin:"10px"}}
@@ -94,22 +117,22 @@ const send=(e)=>{
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                   <Typography gutterBottom variant="h6" component="div">
-                   {dataObj.name}
+                   {dataObj.title}
                   </Typography>
                   <Typography variant="body3" color="text.secondary" >
-                   {dataObj.desc}
+                   {dataObj.quantity}
                   </Typography>
                   
                 </CardContent>
               </Box>
-              <CardActions>
+              <CardActions sx={{marginLeft:"10%"}}>
               
-                <Button size="small">-
+                <Button size="small" onClick={dataObj.qty <=1 ? ()=>dlt(dataObj.id) : ()=>remove(dataObj)}>-
                 </Button>
-                <Typography variant="body1" color="text.primary">
+                <Typography variant="body1" color="text.primary" >
                  {dataObj.qty}
                   </Typography>
-                <Button size="small">+</Button>
+                <Button size="small" onClick={()=>send(dataObj)}>+</Button>
                 
               </CardActions>
               <CardContent sx={{marginTop:'20px'}}>
@@ -118,16 +141,20 @@ const send=(e)=>{
                   </Typography>
              
               </CardContent>
-              <CardContent sx={{marginTop:'20px',marginLeft:'50px'}}>
+              {/* <CardContent sx={{marginTop:'20px',marginLeft:'60px'}}>
               <Typography variant="body1" color="text.primary">
                   ₹{dataObj.price*dataObj.qty}
                   </Typography>
-             
-              </CardContent>
+              </CardContent> */}
+                  <span class="material-symbols-outlined" style={{marginTop:'35px',marginLeft:'4%',cursor:'pointer'}} onClick={()=>dlt(dataObj.id)}>delete</span>
             </Card>
              )
           })}
-       
+         
+            <h3 style={{fontFamily:'kanit',color:'rgb(30,56,50)',marginLeft:'5%'}}>
+              Your Total is : ₹{total}
+            </h3>
+          
         </div>
          <br></br>
          <br></br>
@@ -136,7 +163,23 @@ const send=(e)=>{
          <br></br>
          
         <Footer/>
-    </div>
+    </div>:
+   <div>
+        <Header/>
+        <Header3/>
+
+      <center><h4>Empty Cart!</h4></center>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Footer/>
+   </div>
+        }
+        </>
   );
 }
 
