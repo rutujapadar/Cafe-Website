@@ -16,12 +16,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
-    right: 75,
+    right: 85,
     top: -17,
     border: `2px solid ${theme.palette.background.paper}`,
     padding: '0 4px',
     color:'white',
-    backgroundColor:'#944e32'
+    backgroundColor:'#944e32',
+    
   },
 }));
 
@@ -53,10 +54,12 @@ function Header(){
   
 
     <div className="mem">
-    <IconButton aria-label="cart">
+    <Link to="/Addtb" >
+   
       <StyledBadge badgeContent={getData.length} color="secondary">
       </StyledBadge>
-    </IconButton>
+  
+    </Link>
     {getData.length?
     
     <Link to="/Addtb" >
