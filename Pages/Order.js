@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect,useState } from "react";
 import cardData from "./cardData";
 import {useDispatch} from "react-redux"
-import{ ADD }from "../redux/actions/action"
+import{ ADD } from "../redux/actions/action"
 // import { Card } from 'react-card-component';
 
 function Order() {
@@ -102,7 +102,7 @@ function Order() {
 
 
         const send=(e)=>{
-
+            //console.log(e);
             dispatch(ADD(e));
         }
     return (
@@ -129,6 +129,7 @@ function Order() {
                                 <Typography variant="body3" color="text.secondary" sx={{marginTop:"-6%",marginLeft:"5%"}}>
                                  {dataObj.quantity}
                                 </Typography>
+
                             </Box>
                             <Typography variant="body3" color="text.secondary" >
                              {dataObj.desc}
@@ -137,19 +138,18 @@ function Order() {
                                 <Typography variant="body1" color="text.primary" className="cardprice" style={{marginTop:"10%"}}>
                                 ₹{dataObj.price}
                                 </Typography>
-                                <Button className="cardbutton" style={{marginLeft:"50%",marginTop:"8%", backgroundColor:"#944e32",color:"white"}} onClick={()=>send(dataObj)}>ADD</Button>
+                                <Button className="cardbutton" style={{marginLeft:"50%",marginTop:"8%", backgroundColor:"#944e32",color:"white"}} onClick={()=>{send(dataObj);}}>ADD</Button>
                             </Box>
                           </CardContent>
                         </Box>
-                        <CardContent sx={{marginTop:'20px'}}>
-                        
-                        </CardContent>
+                       
                                            
                                           </Card>
                     </div>
 
                 )
             })}
+                        <ToastContainer/>
 
             {/* 
             <div className="Menu2">
